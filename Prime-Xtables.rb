@@ -141,3 +141,38 @@ END FUNCTION
 
 
 =end
+
+##########################
+# 			INITIAL CODE
+##########################
+
+def is_prime?(prime_chk_num = 0)
+	num_container = []
+	return true if prime_chk_num == 2 				# special case hard coded for two
+	return false if prime_chk_num % 2 == 0 		# returns false if num is even
+	for int_chk_num in 3..prime_chk_num
+		if int_chk_num.odd? 										# eliminates even nums from check to reduce load by half
+			num_container << int_chk_num if prime_chk_num % int_chk_num == 0
+		end
+	end
+	return true if num_container.length == 1 	# if only one int, int must be prime
+	false																			# implicit return of false ensures no false positive for edge cases
+end
+
+
+##########################
+# 		ACTIONABLE CODE
+##########################
+
+
+for i in 0..100
+	ap i if is_prime?(i) == true
+end
+
+
+##########################
+# 			TEST CODE
+##########################
+
+ap is_prime?(443) == true
+
