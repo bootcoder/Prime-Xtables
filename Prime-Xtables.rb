@@ -160,6 +160,36 @@ def is_prime?(prime_chk_num = 0)
 end
 
 
+def check_list(start_pos=0, end_pos=25)
+	read_nums = []
+	prime_set = []
+	File.readlines("primes.txt").each do |line|
+		line.gsub!("\n", "") if line.include? "\n"
+		read_nums << line.to_i
+	end
+	if read_nums[start_pos] && read_nums[end_pos-1]
+		for i in start_pos..end_pos-1
+			prime_set << read_nums[i]
+		end
+	else 
+		build_list(end_pos)
+	end
+	prime_set
+end
+
+def build_list(prime_arr_length)
+	build_list = []
+	chk = 0
+	until build_list.length == prime_arr_length
+		build_list << chk if is_prime?(chk) == true
+		chk += 1
+	end
+	File.open("primes.txt", "w") do |f|
+	  f.puts(build_list)
+	end
+	check_list(0,prime_arr_length)
+end
+
 ##########################
 # 		ACTIONABLE CODE
 ##########################
@@ -175,4 +205,3 @@ end
 ##########################
 
 ap is_prime?(443) == true
-
