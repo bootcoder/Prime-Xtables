@@ -26,13 +26,18 @@ describe is_prime?(11) do
 
 end
 
+
 describe build_list(1) do
+
   it "will raise an error if no value is passed" do
     
   end
+
 end
 
+
 describe check_list(0,20) do
+  
   it "returns a set of primes from separate text file" do
     check_list(0,5).should == [2, 3, 5, 7, 11]
   end
@@ -42,4 +47,14 @@ describe check_list(0,20) do
     check_list(0,10).should_not have(9).items
     check_list(0,10).should_not have(11).items
   end
+
+end
+
+
+describe print_xtables do
+
+  it "should render a multiplication table of primes" do
+    print_xtables.should == true
+  end
+
 end
