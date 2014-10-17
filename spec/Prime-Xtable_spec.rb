@@ -54,7 +54,7 @@ end
 describe print_xtables do
 
   it "should render a multiplication table of primes" do
-    print_xtables.should == true
+    
   end
 
 end
